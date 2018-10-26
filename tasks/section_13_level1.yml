@@ -4,7 +4,6 @@
     command: awk -F':' '($2 == "" ) { print $1 }' /etc/shadow
     register: awk_empty_shadow
     changed_when: False
-    always_run: True
     failed_when: awk_empty_shadow.stdout != '' and lock_shadow_accounts == False
     tags:
       - section13
@@ -218,7 +217,6 @@
     register: uids_list
     failed_when: uids_list.stdout != ''
     changed_when: False
-    always_run: True
     tags:
       - section13
       - section13.16
@@ -228,7 +226,6 @@
     register: uids_list
     failed_when: uids_list.stdout != ''
     changed_when: False
-    always_run: True
     tags:
       - section13
       - section13.17
@@ -236,7 +233,6 @@
   - name: 13.18.1 Check for Presence of User .netrc Files (check) (Scored)
     stat: path='{{ item }}/.netrc'
     with_items: '{{ home_users.stdout_lines }}'
-    always_run: True
     changed_when: False
     register: netrc_files
     tags:
