@@ -22,7 +22,6 @@
     register: startonfilesystem
     changed_when: False
     failed_when: False
-    always_run: True
     tags:
       - section8
       - section8.2
