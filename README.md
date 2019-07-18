@@ -9,6 +9,7 @@
 Install dependencies on your host (on Ubuntu 14.04):
 
 ```bash
+apt-get update
 apt-get install python-pip git python-dev
 pip install ansible markupsafe
 ```
