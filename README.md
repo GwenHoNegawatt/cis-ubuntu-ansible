@@ -4,6 +4,39 @@
 [![Documentation Status](https://readthedocs.org/projects/cis-ubuntu-ansible/badge/?version=latest)](https://readthedocs.org/projects/cis-ubuntu-ansible/?badge=latest)
 [![Coverage Status](https://coveralls.io/repos/awailly/cis-ubuntu-ansible/badge.svg?branch=master)](https://coveralls.io/r/awailly/cis-ubuntu-ansible?branch=master)
 
+## installation
+
+Install dependencies on your host (on Ubuntu 14.04):
+
+```bash
+apt-get install python-pip git python-dev
+pip install ansible markupsafe
+```
+
+Create a placeholder to describe your machine:
+
+```bash
+mkdir -p ansible/roles-ubuntu/roles
+cd ansible/roles-ubuntu
+git clone https://github.com/fishong/cis-ubuntu-ansible roles/cis
+```
+
+Create a playbook in the _roles-ubuntu_ folder:
+
+```bash
+$ cat >>  playbook.yml << 'EOF'
+---
+- hosts: all
+  roles:
+    - cis
+EOF
+```
+
+## run
+```bash
+$ ansible-playbook -b -u USER -i 'IPADDRESS,' playbook.yml
+```
+
 ## Prerequisites
 
 The role is focused on hardening an Ubuntu 14.04 system. However it has been successfully tested on other Debian based systems (Debian 8, Raspbian). The minimum requirements of the targeted system are `ssh`, `aptitude` and `python2`; `ansible>=1.9` is required on your local system.
