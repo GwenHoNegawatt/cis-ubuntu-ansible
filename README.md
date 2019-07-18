@@ -34,8 +34,11 @@ EOF
 
 ## run
 ```bash
-$ ansible-playbook -b -u USER -i 'IPADDRESS,' playbook.yml
+$ ansible-playbook -b -u root -i '127.0.0.1,' playbook.yml
 ```
+
+
+
 
 ## Prerequisites
 
