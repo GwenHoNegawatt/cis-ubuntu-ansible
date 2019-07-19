@@ -42,7 +42,6 @@
     with_items:
       - X11Forwarding
       - HostbasedAuthentication
-      - PermitRootLogin
       - PermitEmptyPasswords
       - PermitUserEnvironment
     notify: restart ssh
