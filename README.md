@@ -78,9 +78,8 @@ nvm          //for testing
 
 install node.js for v8
 ```bash
-curl -sL https://deb.nodesource.com/setup_8.x | bash -
-apt-get install -y nodejs
-node -v
+# install node 8.x
+nvm install v8.15.1 
 ```
 
 Run yarn
