@@ -1,15 +1,23 @@
-# CIS for Ubuntu 14.04
+# Install CIS for Ubuntu 14.04 - NU-Logger
 
-[![Build Status](https://travis-ci.org/awailly/cis-ubuntu-ansible.svg?branch=master)](https://travis-ci.org/awailly/cis-ubuntu-ansible)
-[![Documentation Status](https://readthedocs.org/projects/cis-ubuntu-ansible/badge/?version=latest)](https://readthedocs.org/projects/cis-ubuntu-ansible/?badge=latest)
-[![Coverage Status](https://coveralls.io/repos/awailly/cis-ubuntu-ansible/badge.svg?branch=master)](https://coveralls.io/r/awailly/cis-ubuntu-ansible?branch=master)
+## Before installation
+Add 'universe' at the end of apt sources list:
+```bash
+vim /etc/apt/sources.list
+```
+
+## Install Python Pip
+
+```bash
+apt update
+apt install python-pip
+```
 
 ## installation
 
 Install dependencies on your host (on Ubuntu 14.04):
 
 ```bash
-apt-get update
 apt-get install python-pip git python-dev
 pip install ansible markupsafe
 ```
@@ -33,13 +41,66 @@ $ cat >>  playbook.yml << 'EOF'
 EOF
 ```
 
+Before run, remove 'universe' at /etc/apt/sources.list.
+
 ## run
 ```bash
-$ ansible-playbook -b -u root -i '127.0.0.1,' playbook.yml
+$ ansible-playbook -b -i 'localhost,' playbook.yml --conection=local
 ```
 
+## Change ssh setting
+```bash
+$ vim /etc/ssh/sshd_config
 
+ Permit RootLogin Yes 
+ 
 
+ufw status
+ufw disable
+reboot
+```
+
+After ssh login again, remove node modules in logger file
+```bash
+cd logger-app        //or cd bacnet-logger
+cd server
+rm -rf node_modules
+```
+
+install nvm
+```bash
+git clone https://github.com/nvm-sh/nvm.git .nvm
+cd .nvm
+git checkout <tag>
+. nvm.sh
+nvm          //for testing
+```
+
+install node.js for v8
+```bash
+curl -sL https://deb.nodesource.com/setup_8.x | bash -
+apt-get install -y nodejs
+node -v
+```
+
+Run yarn
+```bash
+yarn
+yarn start
+pm2 update
+pm2 save
+```
+
+## useful command
+```bash
+$ufw enable
+$ufw allow ssh
+$ufw allow http
+$ufw allow 27017
+$ufw allow 3000
+```
+
+=======================================================================================================================================
 
 ## Prerequisites
 
