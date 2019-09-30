@@ -45,7 +45,7 @@ Before run, remove 'universe' at /etc/apt/sources.list.
 
 ## run
 ```bash
-$ ansible-playbook -b -i 'localhost,' playbook.yml --conection=local
+$ ansible-playbook -b -i 'localhost,' playbook.yml --connection=local
 ```
 
 ## Change ssh setting
