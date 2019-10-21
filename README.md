@@ -99,9 +99,23 @@ $ufw allow 27017
 $ufw allow 3000
 ```
 
-## Edit Setting
+## Check RTC Setting
+```bash
+#check time status
+systemctl status ntp
 ```
+
+## Edit RTC Setting
+```bash
+timedatectl
+sh /home/etc/sh
+
+#
 crontab -e
+# comment sh /home/etc/sh
+
+#  diable ntp
+systemctl disable ntp 
 ```
 =======================================================================================================================================
 
